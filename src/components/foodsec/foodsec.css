@@ -1,0 +1,6 @@
+.link-img img {
+    transition: 0.3s;
+}
+.link-img:hover img {
+    transform: rotate(13.5deg);
+}

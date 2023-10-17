@@ -1,0 +1,45 @@
+:root {
+    --main-color: #e67e22;
+    --dark-color: #130f40;
+}
+section {
+    overflow: hidden;
+}
+
+.icon {
+    color: var(--main-color);
+}
+
+nav a {
+    display: inline-block !important;
+    color: #000 !important;
+}
+nav a.active {
+    color: var(--main-color) !important ;
+}
+.box {
+    background-color: #eee !important;
+}
+
+.dropdown-toggle::after {
+    display: none !important;
+}
+
+.cart .dropdown-menu {
+    width: 350px;
+}
+@media (max-width: 576px) {
+    .cart .dropdown-menu {
+        width: 101vw;
+    }
+    .cart .dropdown-menu {
+        right: -85px !important ;
+    }
+}
+.cart .dropdown-menu .img {
+    width: 60px;
+}
+
+.text-main {
+    color: var(--main-color) !important ;
+}

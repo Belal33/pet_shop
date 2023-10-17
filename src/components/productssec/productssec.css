@@ -1,0 +1,33 @@
+.product .img {
+    width: fit-content;
+}
+.product .icons {
+    top: 0;
+    right: -60px;
+    transition: 0.3s;
+    z-index: 1;
+}
+.product .box {
+    background-color: transparent !important;
+}
+.product .box .img img {
+    transition: 0.3s;
+    z-index: -1;
+}
+.product .box .img:hover .icons {
+    right: 1.5rem;
+}
+.product .box .img:hover img {
+    transform: scale(1.1);
+}
+.product .icons svg {
+    cursor: pointer;
+}
+.product .icons svg:hover {
+    color: white;
+    background-color: var(--main-color) !important;
+}
+.active-icon svg {
+    background-color: var(--main-color) !important;
+    color: white;
+}
