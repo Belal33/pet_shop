@@ -22,12 +22,13 @@
 }
 .product .icons svg {
     cursor: pointer;
+    color: black;
 }
 .product .icons svg:hover {
     color: white;
     background-color: var(--main-color) !important;
 }
-.active-icon svg {
+.icons svg.active {
     background-color: var(--main-color) !important;
     color: white;
 }

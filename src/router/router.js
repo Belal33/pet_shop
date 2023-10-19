@@ -5,6 +5,8 @@ import { ProductsPage } from "../pages/ProductsPage";
 import { ContactPage } from "../pages/ContactPage";
 import SinupPage from "../pages/SignupPage";
 import LoginForm from "../components/loginform";
+import Auth from "../components/Auth";
+import NoAuth from "../components/Auth/noauth";
 
 export const router = createBrowserRouter([
     {
@@ -27,10 +29,10 @@ export const router = createBrowserRouter([
     },
     {
         path: "/signup",
-        element: <SinupPage />,
+        element: <NoAuth children={SinupPage} />,
     },
     {
         path: "/login",
-        element: <LoginForm />,
+        element: <NoAuth children={LoginForm} />,
     },
 ]);
