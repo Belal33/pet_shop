@@ -5,7 +5,7 @@ import { useEffect, useRef } from "react";
 import Spinner from "react-bootstrap/Spinner";
 import useFetchProducts from "../../hooks/useFetchProducts";
 import { baseUrl } from "../../clientApis/base";
-import { Pagination } from "react-bootstrap";
+import { Container, Pagination } from "react-bootstrap";
 
 function items(totalItems, itemsPerPage, pageNumber) {
     let itemsArr = [];
@@ -36,7 +36,7 @@ export default function ProductsSec() {
     if (response) {
         return (
             <section className="product py-5" id="product">
-                <div className="container">
+                <Container>
                     <h2 className="fs-1 text-center mb-4">
                         Our <span> Products</span>
                     </h2>
@@ -83,7 +83,7 @@ export default function ProductsSec() {
                             }`}
                         />
                     </Pagination>
-                </div>
+                </Container>
             </section>
         );
     } else if (loading) {
@@ -101,7 +101,7 @@ export default function ProductsSec() {
         );
     } else if (error) {
         return (
-            <>
+            <Container>
                 <div
                     style={{ height: "500px" }}
                     className=" flex-column d-flex justify-content-center align-items-center"
@@ -109,12 +109,12 @@ export default function ProductsSec() {
                     <h2 className="fs-1 text-center my-4">
                         <span> NO</span> Products
                     </h2>
-                    <p className="fs-2 text-danger">
+                    <p className="fs-2 text-center text-danger">
                         Something went wrong. Please check your Network
                         connection.
                     </p>
                 </div>
-            </>
+            </Container>
         );
     }
 }

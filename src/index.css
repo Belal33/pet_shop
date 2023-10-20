@@ -42,6 +42,24 @@ nav a.active {
 .cart .dropdown-menu .img {
     width: 60px;
 }
+
+.cartIcon {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    border-radius: 50%;
+    padding: 5px;
+    width: 16px;
+    height: 16px;
+    background-color: red;
+    color: white;
+    top: 0;
+    right: 0;
+    z-index: 1;
+}
+
 .delete-icon {
     background-color: transparent;
     border: none;
@@ -84,4 +102,9 @@ nav a.active {
 
 .pagination .page-item > .page-link span {
     color: inherit !important;
+}
+
+.form-floating > input:disabled ~ label::after {
+    background-color: inherit;
+    display: none;
 }

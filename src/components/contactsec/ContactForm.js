@@ -4,7 +4,7 @@ import { EmailFormInput, TextFormInput } from "../FormInputs";
 
 export function ContactForm() {
     return (
-        <div className="col-md-6 p-5">
+        <div className="col-sm-10 col-md-8 col-xl-6 p-3">
             <p className="text-sm-center text-md-start fs-1">Contact Us</p>
 
             <EmailFormInput />

@@ -6,14 +6,20 @@ import { faPaw } from "@fortawesome/free-solid-svg-icons";
 import { Link, NavLink } from "react-router-dom";
 import { Cart } from "./Cart";
 import { MyButton } from "../mybutton/MyButton";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { UserContext } from "../../contexts";
 import ProfileMenu from "./ProfileMenu";
+import { isUserLogin } from "../../utils/isUserLogin";
 
 export function NavBar() {
-    let { userData, logout } = useContext(UserContext);
-    console.log("userData from nav bar :");
-    console.log(userData);
+    let { userData, updateUserData } = useContext(UserContext);
+    useEffect(() => {
+        isUserLogin().then((islog) => {
+            if (islog === "nouser") {
+                updateUserData({ isAuth: false });
+            }
+        });
+    }, []);
     return (
         <>
             <Navbar expand="lg" className="bg-body-tertiary sticky-top">
@@ -72,11 +78,22 @@ export function NavBar() {
                             >
                                 ContactUs
                             </NavLink>
+                            {userData.isAuth && (
+                                <NavLink
+                                    to="/profile"
+                                    style={{
+                                        textDecoration: "none",
+                                        padding: "8px",
+                                    }}
+                                >
+                                    MY PROFILE
+                                </NavLink>
+                            )}
                         </Nav>
                     </Navbar.Collapse>
                     <div className=" d-flex ms-auto   order-1 order-lg-4  position-relative">
                         {userData.isAuth && (
-                            <ProfileMenu user={userData.user} logout={logout} />
+                            <ProfileMenu user={userData.user} />
                         )}
                         <Cart />
                     </div>

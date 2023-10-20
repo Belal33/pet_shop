@@ -43,9 +43,9 @@ export default function SinupForm() {
                 style={{
                     fontWeight: "400",
                 }}
-                className="text-center text-main text-md-start display-2"
+                className="text-center text-md-start display-2"
             >
-                Sign Up
+                Sign <span>Up</span>
             </p>
 
             <EmailFormInput />

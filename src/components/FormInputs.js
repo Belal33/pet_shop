@@ -1,11 +1,12 @@
 import Form from "react-bootstrap/Form";
 
-export function EmailFormInput() {
+export function EmailFormInput({ disabled }) {
     return (
         <Form.Floating className="">
             <Form.Control
                 style={{
                     border: "none",
+                    backgroundColor: "white",
                     boxShadow: "none",
                     borderRadius: "0",
                     borderBottom: " 2px solid black",
@@ -14,18 +15,20 @@ export function EmailFormInput() {
                 name="email"
                 type="text"
                 placeholder="name@example.com"
+                disabled={disabled}
             />
             <label htmlFor="floatingInputCustom">Email address</label>
         </Form.Floating>
     );
 }
-export function TextFormInput({ name, label }) {
+export function TextFormInput({ name, label, disabled }) {
     return (
         <Form.Floating className="">
             <Form.Control
                 name={name}
                 style={{
                     border: "none",
+                    backgroundColor: "transparent",
                     boxShadow: "none",
                     borderRadius: "0",
                     borderBottom: " 2px solid black",
@@ -33,8 +36,14 @@ export function TextFormInput({ name, label }) {
                 id="floatingInputCustomText"
                 type="text"
                 placeholder={label}
+                disabled={disabled}
             />
-            <label htmlFor="floatingInputCustomText">{label}</label>
+            <label
+                style={{ color: "inherit" }}
+                htmlFor="floatingInputCustomText"
+            >
+                {label}
+            </label>
         </Form.Floating>
     );
 }

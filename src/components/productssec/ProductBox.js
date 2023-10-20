@@ -10,11 +10,13 @@ import { CartContext } from "../../contexts";
 export function ProductBox({ id, name, price, img }) {
     let { cartItems, updateCartItems } = useContext(CartContext);
     let [inCart, setInCart] = useState(0);
+
     useEffect(() => {
         setInCart(cartItems.filter((cartItem) => cartItem?.id === id).length);
         console.log("inCart.current");
         console.log(inCart);
-    }, []);
+    }, [cartItems]);
+
     return (
         <div className="col-md-6 text-center box my-3 col-lg-4 prod">
             <div className="img overflow-hidden mb-3 position-relative mx-auto w-100">
@@ -31,30 +33,49 @@ export function ProductBox({ id, name, price, img }) {
                                     (cartItem) => cartItem?.id === id
                                 ).length;
 
-                                console.log("|||||clidkinCart");
-                                console.log(inCart);
+                                // console.log("|||||clidkinCart");
+                                // console.log(inCart);
+                                // console.log(cartItems)
                                 if (inCart === 0) {
-                                    cartItems.push({
-                                        id,
-                                        name,
-                                        price,
-                                        imageurl: img,
-                                    });
+                                    // cartItems.push({
+                                    //     id,
+                                    //     name,
+                                    //     price,
+                                    //     imageurl: img,
+                                    // });
                                     console.log("cartItems|||||");
                                     console.log(cartItems);
                                     e.target.classList.add("active");
-                                    updateCartItems(cartItems);
+
+                                    // last version
+                                    // updateCartItems(cartItems);
+                                    // ================================
+                                    // updated version
+                                    let newProducts = [
+                                        ...cartItems,
+                                        {
+                                            id,
+                                            name,
+                                            price,
+                                            imageurl: img,
+                                        },
+                                    ];
+                                    updateCartItems(newProducts);
                                 }
                                 if (inCart === 1) {
                                     // if the item in the cart
                                     console.log(cartItems);
-                                    cartItems = cartItems.filter(
+
+                                    // Don't mutate the state ya bola
+
+                                    // updated version
+                                    let newCartItems = cartItems.filter(
                                         (cartItem) => cartItem?.id !== id
                                     );
 
                                     console.log(cartItems);
                                     e.target.classList.remove("active");
-                                    updateCartItems(cartItems);
+                                    updateCartItems(newCartItems);
                                 }
                             }}
                         />

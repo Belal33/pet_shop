@@ -35,9 +35,9 @@ export default function LoginForm() {
                 style={{
                     fontWeight: "400",
                 }}
-                className="text-center text-main text-md-start display-2"
+                className="text-center  text-md-start display-2"
             >
-                Log In
+                Log <span>In</span>
             </p>
 
             <EmailFormInput />

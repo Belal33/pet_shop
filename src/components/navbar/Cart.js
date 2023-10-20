@@ -2,29 +2,32 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { Dropdown } from "react-bootstrap";
 import { MyButton } from "../mybutton/MyButton";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { CartContext } from "../../contexts";
+import { useNavigate } from "react-router-dom";
 
 export function Cart() {
     let { cartItems, updateCartItems } = useContext(CartContext);
+    const navigete = useNavigate();
     let deleteItemHandler = (e, itemId) => {
         console.log(e.target);
         updateCartItems(
             cartItems.filter((cartItem) => cartItem?.id !== itemId)
         );
     };
-    useEffect(() => console.log(`||||||| ${cartItems}`));
     return (
         <Dropdown className="cart ">
-            {cartItems ? "" : ""}
             <Dropdown.Toggle
-                className="text-black border-0 p-2 "
+                className="text-black border-0 p-2 position-relative"
                 id="dropdown-basic"
                 style={{
                     backgroundColor: "transparent",
                 }}
             >
                 <FontAwesomeIcon icon={faCartShopping} size="xl" />
+                {cartItems?.length && (
+                    <div className="cartIcon">{cartItems?.length}</div>
+                )}
             </Dropdown.Toggle>
 
             <Dropdown.Menu
@@ -75,10 +78,17 @@ export function Cart() {
                         No items Found
                     </p>
                 )}
-                {/* <Dropdown.Item href="#/action-1">Action</Dropdown.Item> */}
-                {/* <Dropdown.Item href="#/action-2">Another action</Dropdown.Item> */}
                 <div className="text-center">
-                    <MyButton name={"Buy Now"} className="mb-3" dark={true} />
+                    <MyButton
+                        onClickHandle={(e) => {
+                            if (cartItems?.length) {
+                                navigete("/payment");
+                            }
+                        }}
+                        name={"Buy Now"}
+                        className="mb-3"
+                        dark={true}
+                    />
                 </div>
             </Dropdown.Menu>
         </Dropdown>

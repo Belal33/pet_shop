@@ -6,7 +6,7 @@ export function ProductsPage() {
     return (
         <>
             <NavBar />
-            <main>
+            <main style={{ minHeight: "100vh" }}>
                 <ProductsSec />
             </main>
 
