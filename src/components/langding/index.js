@@ -2,9 +2,10 @@ import "./landing.css";
 import home_bg_img from "../../image/home_bg_img.jpg";
 import bottom_wave from "../../image/bottom_wave.png";
 import { MyButton } from "../mybutton/MyButton";
+import { Link } from "react-router-dom";
 export function LandingSec() {
     return (
-        <header>
+        <header className="overflow-hidden">
             <div
                 className="landding position-relative overflow-hidden"
                 id="home"
@@ -16,7 +17,9 @@ export function LandingSec() {
                             <h1 className="text-light">
                                 <span> Hi</span> Welcome To Our Pet Shop
                             </h1>
-                            <MyButton name="SHOP NOW" dark={false} />
+                            <Link to={"/products"}>
+                                <MyButton name="SHOP NOW" dark={false} />
+                            </Link>
                         </div>
                     </div>
                 </div>

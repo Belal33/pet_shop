@@ -22,46 +22,55 @@ export function ProfileForm() {
         username: "",
     });
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
         if (editState) {
             let errors = validateForm(data);
             console.log(errors);
             if (!errors.lastname && !errors.firstname && !errors.username) {
-                try {
-                    let reqData = {};
-                    if (data.username) {
-                        reqData.username = data.username;
-                    }
-                    if (data.firstname) {
-                        reqData.first_name = data.firstname;
-                    }
-                    if (data.lastname) {
-                        reqData.last_name = data.lastname;
-                    }
-                    let res = await authClientApi.patch("auth/user", reqData);
-                    console.log(res?.data);
-                    let newUserData = {};
-                    newUserData.user = res.data;
-                    newUserData.isAuth = true;
-                    e.target.lastname.value = "";
-                    e.target.username.value = "";
-                    e.target.firstname.value = "";
-
-                    updateUserData(newUserData);
-                    setEditState(false);
-                } catch (err) {
-                    if (err?.response?.status === 400) {
-                        errors = { ...err.response.data };
-                        setFormErrors(errors);
-
-                        console.log(err);
-                    } else {
-                        console.log(err);
-                        errors = { non_field_errors: err.message };
-                        setFormErrors(errors);
-                    }
+                let reqData = {};
+                if (data.username) {
+                    reqData.username = data.username;
                 }
+                if (data.firstname) {
+                    reqData.first_name = data.firstname;
+                }
+                if (data.lastname) {
+                    reqData.last_name = data.lastname;
+                }
+                authClientApi
+                    .patch("auth/user", reqData)
+                    .then((res) => {
+                        console.log(res);
+                        let newUserData = {};
+                        newUserData.user = res.data;
+                        newUserData.isAuth = true;
+                        e.target.lastname.value = "";
+                        e.target.username.value = "";
+                        e.target.firstname.value = "";
+
+                        updateUserData(newUserData);
+                        setEditState(false);
+                    })
+                    .catch((err) => {
+                        if (err?.response?.status === 400) {
+                            errors = {};
+                            errors.username = err.response.data.username;
+                            setFormErrors(errors);
+
+                            console.log(err);
+                        } else {
+                            console.log(err);
+                            errors = {
+                                non_field_errors:
+                                    "A user with that username already exists.",
+                            };
+                            setFormErrors(errors);
+                        }
+                    });
+            } else {
+                console.log(errors);
+                setFormErrors(errors);
             }
         } else {
             setEditState(true);

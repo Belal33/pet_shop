@@ -6,11 +6,12 @@ import useFetchOperations from "../hooks/useFetchOperations";
 import Footer from "../components/footer";
 import { NavBar } from "../components/navbar";
 
-const OperationsEl = (response, loading, error) => {
+const OperationsEl = (userData, response, loading, error) => {
     if (response) {
-        return response.map((operation) => {
+        return response.map((operation, i) => {
             return (
                 <div
+                    key={i}
                     className="product-item row mb-4 py-3  col-10   col-lg-8 justify-content-between align-items-center"
                     style={{ backgroundColor: "#f3f3f3" }}
                 >
@@ -22,9 +23,10 @@ const OperationsEl = (response, loading, error) => {
                             src={operation.product.imageurl}
                         />
                     </div>
+
                     <div className="text col">
                         <p style={{ color: "#3d4d6f" }} className="mb-1 fs-3">
-                            {operation.user.username}
+                            {userData.user.is_staff && operation.user.username}
                         </p>
                         <p className="mb-1 text-main fs-4">
                             {operation.product.name}
@@ -76,7 +78,11 @@ export default function ProfilePage() {
     const { userData } = useContext(UserContext);
     const { fetchOperations, response, loading, error } = useFetchOperations();
     useEffect(() => {
-        fetchOperations("tools/user-operations");
+        if (userData.user.is_staff) {
+            fetchOperations("tools/all-operations");
+        } else {
+            fetchOperations("tools/user-operation");
+        }
     }, []);
 
     return (
@@ -93,21 +99,37 @@ export default function ProfilePage() {
                                     className="rounded-circle img-fluid"
                                     style={{ width: "150px" }}
                                 />
-                                <h5 className="my-3">
+                                <h5 className="mt-3 text-main">
                                     {userData.user.username || "user name"}
                                 </h5>
+                                {userData.user.is_staff && (
+                                    <p className="text-success fs-5">
+                                        {" "}
+                                        |Admin User|{" "}
+                                    </p>
+                                )}
                             </div>
                         </div>
                     </div>
-
                     <div className="col-lg-8">
                         <ProfileForm userData={userData} />
                     </div>
                 </div>
+                <div className="text-center p-2 py-5 display-3">
+                    {userData.user.is_staff ? (
+                        <>
+                            All <span>Operations</span>{" "}
+                        </>
+                    ) : (
+                        <>
+                            Your Last <span>Operations</span>{" "}
+                        </>
+                    )}
+                </div>
 
                 <div className="row justify-content-center align-items-center">
                     {/* the user Products  */}
-                    {OperationsEl(response, loading, error)}
+                    {OperationsEl(userData, response, loading, error)}
                     {/* end product-item */}
                 </div>
             </Container>

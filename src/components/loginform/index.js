@@ -3,6 +3,7 @@ import { MyButton } from "../mybutton/MyButton";
 import Form from "react-bootstrap/Form";
 import { useLoginProcess, validateForm } from "./utils";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function LoginForm() {
     let [data, setData] = useState({
@@ -54,10 +55,15 @@ export default function LoginForm() {
                 {formerrors.non_field_errors && formerrors.non_field_errors}
             </div>
 
+            <div className="text center mt-5">
+                <Link to={"/signup"}>
+                    <span>Create an Account</span>
+                </Link>
+            </div>
             <MyButton
                 name={"LogIn"}
                 dark={true}
-                className={"w-100 text-center my-4"}
+                className={"w-100 text-center mb-4"}
             />
         </Form>
     );

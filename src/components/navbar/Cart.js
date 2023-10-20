@@ -16,9 +16,9 @@ export function Cart() {
         );
     };
     return (
-        <Dropdown className="cart ">
+        <Dropdown style={{ position: "unset" }} className="cart  ">
             <Dropdown.Toggle
-                className="text-black border-0 p-2 position-relative"
+                className="text-black border-0 p-2"
                 id="dropdown-basic"
                 style={{
                     backgroundColor: "transparent",
@@ -35,6 +35,7 @@ export function Cart() {
                     right: "10px",
                     top: "45px",
                     left: "auto",
+                    borderRadius: " 10px 0 10px 10px",
                 }}
                 className="shadow-sm"
             >
@@ -83,6 +84,8 @@ export function Cart() {
                         onClickHandle={(e) => {
                             if (cartItems?.length) {
                                 navigete("/payment");
+                            } else {
+                                navigete("/products");
                             }
                         }}
                         name={"Buy Now"}

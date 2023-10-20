@@ -32,11 +32,13 @@ nav a.active {
     min-width: 210px;
 }
 @media (max-width: 576px) {
+    .profile .dropdown-menu,
     .cart .dropdown-menu {
         width: 101vw;
     }
+    .profile .dropdown-menu,
     .cart .dropdown-menu {
-        right: -85px !important ;
+        right: -60px !important ;
     }
 }
 .cart .dropdown-menu .img {

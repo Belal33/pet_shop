@@ -23,7 +23,7 @@ export function NavBar() {
     return (
         <>
             <Navbar expand="lg" className="bg-body-tertiary sticky-top">
-                <Container className="position-relative">
+                <Container className="position-relative ">
                     <Navbar.Brand href="/">
                         <FontAwesomeIcon
                             className="logo"
@@ -106,7 +106,7 @@ export function NavBar() {
                     style={{ backgroundColor: "#3d4d6f" }}
                 >
                     <Container className="d-flex flex-column flex-sm-row justify-content-between align-items-center">
-                        <Link to={"/singup"}>
+                        <Link to={"/signup"}>
                             <p className="d-inline-block  p-1 m-0 text-white ">
                                 Register now And <span> JoinUs </span>
                             </p>

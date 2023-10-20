@@ -7,6 +7,7 @@ import { MyButton } from "../mybutton/MyButton";
 import Form from "react-bootstrap/Form";
 import { useSignupProcess, validateForm } from "./utils";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function SinupForm() {
     let [data, setData] = useState({
@@ -71,11 +72,15 @@ export default function SinupForm() {
             <div className="mb-2 text-danger">
                 {formerrors.non_field_errors && formerrors.non_field_errors}
             </div>
-
+            <div className="text center mt-5">
+                <Link to={"/login"}>
+                    <span>I have an account</span>
+                </Link>
+            </div>
             <MyButton
                 name={"SignUp"}
                 dark={true}
-                className={"w-100 text-center my-4"}
+                className={"w-100 text-center mb-4"}
             />
         </Form>
     );

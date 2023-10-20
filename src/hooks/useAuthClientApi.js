@@ -12,11 +12,10 @@ function useAuthClientApi() {
                 if (error.response.status === 401 && !prevReq.sent) {
                     prevReq.sent = true;
                     await refreshToken();
+                } else {
+                    console.log(error);
+                    return Promise.eject(error);
                 }
-                // else {
-                console.log(error);
-                return;
-                // }
             }
         );
         return () => {

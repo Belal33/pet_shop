@@ -6,7 +6,7 @@ import useLogout from "../../hooks/useLogout";
 export default function ProfileMenu({ user }) {
     const logout = useLogout();
     return (
-        <Dropdown className="profile">
+        <Dropdown style={{ position: "unset" }} className="profile">
             <Dropdown.Toggle
                 className="text-black border-0 px-0"
                 id="dropdown-basic"
@@ -15,9 +15,8 @@ export default function ProfileMenu({ user }) {
                 }}
             >
                 <span
-                    className="fs-sm-5"
                     style={{
-                        fontSize: "20px",
+                        fontSize: "calc(0.7rem + 1vw)",
                         fontWeight: "300",
                         lineHeight: "1",
                         // color: "#3d4d6f",
@@ -29,12 +28,12 @@ export default function ProfileMenu({ user }) {
 
             <Dropdown.Menu
                 style={{
-                    right: "5px",
-                    top: "30px",
+                    right: "55px",
+                    top: "45px",
                     left: "auto",
                     borderRadius: " 10px 0 10px 10px",
                 }}
-                className="shadow-lg"
+                className="shadow-lg text-center text-sm-start"
             >
                 <Dropdown.Item as={Link} to={"/profile"}>
                     <div style={{ fontSize: "12px" }}>Username:</div>
@@ -65,6 +64,13 @@ export default function ProfileMenu({ user }) {
                 </Dropdown.Item>
 
                 <div className="text-center">
+                    <Link to={"profile"} className="me-2">
+                        <MyButton
+                            name={"Edit"}
+                            className={"py-0 px-4"}
+                            dark={true}
+                        />
+                    </Link>
                     <MyButton
                         name={"Logout"}
                         className={"py-0 px-4 bg-danger"}

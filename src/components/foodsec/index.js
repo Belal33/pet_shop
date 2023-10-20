@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./foodsec.css";
 
 export default function FoodSec() {
@@ -24,7 +25,8 @@ export default function FoodSec() {
                             Consequuntur Eligendi Quaerat Vitae Shaikh Anas.
                         </p>
                         <p className="text-black fs-1">$15.00 ~ $35.00</p>
-                        <a href="/" className="link-img">
+                        {/* <a href="/" className="link-img"></a> */}
+                        <Link className="link-img" to={"/products"}>
                             <img
                                 style={{
                                     transition: "0.3s",
@@ -32,7 +34,7 @@ export default function FoodSec() {
                                 src="image/shop_now_dog.png"
                                 alt=""
                             />
-                        </a>
+                        </Link>
                     </div>
                 </div>
                 <div className="row align-items-center">
@@ -46,7 +48,8 @@ export default function FoodSec() {
                             Consequuntur Eligendi Quaerat Vitae Shaikh Anas.
                         </p>
                         <p className="text-black fs-1">$11.00 ~ $25.00</p>
-                        <a href="/" className="link-img">
+
+                        <Link className="link-img" to={"/products"}>
                             <img
                                 style={{
                                     transition: "0.3s",
@@ -54,7 +57,7 @@ export default function FoodSec() {
                                 src="image/shop_now_cat.png"
                                 alt=""
                             />
-                        </a>
+                        </Link>
                     </div>
                     <div className="col-md-6 p-0">
                         <div className="img">

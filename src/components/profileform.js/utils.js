@@ -21,6 +21,7 @@ function validateForm(values) {
             errors.lastname = "Last Name should not contain any spaces";
         }
     }
+    // console.log(errors);
     return errors;
 }
 // https://www.learmoreseekmore.com/2022/10/reactjs-v18-jwtauthentication-using-httponly-cookie.html

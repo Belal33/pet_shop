@@ -1,6 +1,7 @@
 import Container from "react-bootstrap/esm/Container";
 import dryImg from "../../image/about_img.png";
 import { MyButton } from "../mybutton/MyButton";
+import { Link } from "react-router-dom";
 export default function AboutSec() {
     return (
         <section className="about py-5" id="about">
@@ -24,7 +25,9 @@ export default function AboutSec() {
                             Elit. Voluptatum Sint, Dolore Perspiciatis Iure
                             Consequuntur Eligendi Quaerat Vitae Shaikh Anas.
                         </p>
-                        <MyButton name="READ MORE" dark={true} />
+                        <Link to={"/services"}>
+                            <MyButton name="READ MORE" dark={true} />
+                        </Link>
                     </div>
                 </div>
             </Container>
