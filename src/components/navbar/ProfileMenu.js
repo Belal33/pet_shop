@@ -64,7 +64,7 @@ export default function ProfileMenu({ user }) {
                 </Dropdown.Item>
 
                 <div className="text-center">
-                    <Link to={"profile"} className="me-2">
+                    <Link to={"/profile"} className="me-2">
                         <MyButton
                             name={"Edit"}
                             className={"py-0 px-4"}

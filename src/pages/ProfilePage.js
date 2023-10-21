@@ -81,7 +81,7 @@ export default function ProfilePage() {
         if (userData.user.is_staff) {
             fetchOperations("tools/all-operations");
         } else {
-            fetchOperations("tools/user-operation");
+            fetchOperations("tools/user-operations");
         }
     }, []);
 
